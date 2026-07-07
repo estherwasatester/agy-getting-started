@@ -1,0 +1,4 @@
+# Eval workspace (generated artifacts)
+.agents/skills/antigravity-install-workspace/
+# Claude session files
+.claude/

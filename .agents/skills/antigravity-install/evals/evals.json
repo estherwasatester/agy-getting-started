@@ -1,0 +1,23 @@
+{
+  "skill_name": "antigravity-install",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "I just got a new MacBook Pro and I want to start building agents with Antigravity. How do I get everything set up? I already have Homebrew installed.",
+      "expected_output": "A clear, ordered installation guide covering: agy CLI, agents-cli, GCP ADK skills via agents-cli setup, and Google Cloud skills via npx skills add google/skills. Should include macOS-specific commands and verification steps.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "I'm trying to use the agents-cli but I get 'command not found'. I also need to install the GCP skills for Claude Code. I'm on Ubuntu 22.04.",
+      "expected_output": "Diagnosis and fix for missing agents-cli (uv tool install google-agents-cli), plus instructions for installing GCP skills via npx skills add google/skills. Should include Linux-specific PATH notes.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "What's the fastest way to get agy and all the Google skills installed in one shot? I already have Node 20 and Python 3.12.",
+      "expected_output": "Concise path: install agy via curl script, then agents-cli via uv, then agents-cli setup for ADK skills, then npx skills add google/skills for cloud skills. Verification commands at the end.",
+      "files": []
+    }
+  ]
+}
