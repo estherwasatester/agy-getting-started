@@ -1,0 +1,18 @@
+{
+  "name": "agy-getting-started",
+  "version": "1.0.0",
+  "description": "Onboarding getting started helper skill for customers to starting using AGY for building agents",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "sync:agents": "bun .agents/sync-agents.js || node .agents/sync-agents.js"
+  },
+  "keywords": [
+    "antigravity",
+    "agy",
+    "agents",
+    "onboarding"
+  ],
+  "author": "",
+  "license": "ISC"
+}
