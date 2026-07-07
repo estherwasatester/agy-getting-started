@@ -27,8 +27,9 @@ The repository contains the following key components:
 * **[.agents/skills/antigravity-install/SKILL.md](file:///Users/estherlloyd/Documents/agy/agy-getting-started/.agents/skills/antigravity-install/SKILL.md)**: The core skill definition. This file contains the complete markdown instructions used by AI coding agents to guide the user through the installation process.
 * **[.agents/skills/antigravity-install/evals/evals.json](file:///Users/estherlloyd/Documents/agy/agy-getting-started/.agents/skills/antigravity-install/evals/evals.json)**: A set of evaluation prompts and expected outputs to verify and test the performance of the onboarding agent across different platforms (macOS, Ubuntu, general environment).
 * **[AGENTS.md](file:///Users/estherlloyd/Documents/agy/agy-getting-started/AGENTS.md)**: Dedicated system-level instructions and best practices for AI agents executing this skill.
-* **[.agents/agents/](file:///Users/estherlloyd/Documents/agy/agy-getting-started/.agents/agents)**: The canonical, tool-agnostic directory for specialist agent definitions. Edit your agent profiles here.
-* **[.agents/sync-agents.js](file:///Users/estherlloyd/Documents/agy/agy-getting-started/.agents/sync-agents.js)**: A synchronization script that mirrors definitions from `.agents/agents/` to `.claude/agents/` (the format read by Claude Code) and other supported agent tools.
+* **[.claude/agents/](file:///Users/estherlloyd/Documents/agy/agy-getting-started/.claude/agents)**: The canonical, default directory for specialist agent definitions (read directly by Claude Code). Edit your agent profiles here.
+* **[.agents/agents/](file:///Users/estherlloyd/Documents/agy/agy-getting-started/.agents/agents)**: The mirrored directory for specialist agent definitions, synced automatically for other agent tools.
+* **[.agents/sync-agents.js](file:///Users/estherlloyd/Documents/agy/agy-getting-started/.agents/sync-agents.js)**: A synchronization script that mirrors definitions from `.claude/agents/` into `.agents/agents/` and other supported agent tools.
 
 ---
 
@@ -44,7 +45,7 @@ If you have a coding agent (such as Claude Code, Gemini CLI, Cursor, or Windsurf
 This workspace contains custom skills in `.agents/skills/`. To use this skill, read the instructions in [SKILL.md](file:///Users/estherlloyd/Documents/agy/agy-getting-started/.agents/skills/antigravity-install/SKILL.md) and refer to [AGENTS.md](file:///Users/estherlloyd/Documents/agy/agy-getting-started/AGENTS.md) for execution notes.
 
 ### Synchronizing Specialist Agent Definitions
-To mirror your canonical specialist definitions from `.agents/agents/` into `.claude/agents/` so that **Claude Code** can read and utilize them, run:
+To mirror your canonical specialist definitions from `.claude/agents/` (where Claude Code reads them by default) into `.agents/agents/` (for other agent tools), run:
 
 ```bash
 bun run sync:agents

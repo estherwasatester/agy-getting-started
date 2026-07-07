@@ -1,4 +1,9 @@
 # Eval workspace (generated artifacts)
 .agents/skills/antigravity-install-workspace/
 # Claude session files
-.claude/
+.claude/*
+!.claude/agents/
+
+# Mirrored agent definitions
+.agents/agents/
+

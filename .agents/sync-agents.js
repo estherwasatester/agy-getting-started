@@ -1,8 +1,9 @@
 #!/usr/bin/env bun
 /**
- * Mirrors the canonical, tool-agnostic specialist definitions in `.agents/agents/`
- * into `.claude/agents/` (the location Claude Code reads). `.agents/` is the single
- * source of truth — edit definitions there, then run `bun run sync:agents`.
+ * Mirrors the canonical, default specialist definitions in `.claude/agents/`
+ * (the location Claude Code reads by default) into `.agents/agents/` (for other agent tools).
+ * `.claude/agents/` is the single source of truth — edit definitions there,
+ * then run `bun run sync:agents` to mirror them.
  *
  * Other agent tools can add their own mirror target here as needed.
  */
@@ -11,8 +12,8 @@ import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const here = dirname(fileURLToPath(import.meta.url));
-const SRC = join(here, "agents");
-const TARGETS = [join(here, "..", ".claude", "agents")];
+const SRC = join(here, "..", ".claude", "agents");
+const TARGETS = [join(here, "agents")];
 
 const sources = existsSync(SRC) ? readdirSync(SRC).filter((f) => f.endsWith(".md")) : [];
 if (sources.length === 0) {
