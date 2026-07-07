@@ -1,23 +1,24 @@
 ---
 name: antigravity-install
 description: >
-  Guide users through installing Antigravity 2.0 (the `agy` CLI), the Google Agents CLI
-  (`agents-cli`), all GCP/ADK skills, and the GCP Google Cloud skills on their local laptop.
-  Use this skill whenever someone asks how to install Antigravity, set up `agy`, install
-  agents-cli, install GCP skills, set up the ADK development environment, or get started
-  with Google Antigravity on their machine — even if they don't say "install" explicitly
-  (e.g. "how do I get Antigravity running?", "set me up with the ADK stuff", "I want to
-  use agents-cli locally").
+  Guide users through installing the full Antigravity 2.0 stack: the `google-antigravity`
+  Python SDK, the `agy` CLI, the Google Agents CLI (`agents-cli`), all GCP/ADK skills, and
+  the GCP Google Cloud skills on their local laptop. Use this skill whenever someone asks
+  how to install Antigravity 2.0, set up `agy`, install agents-cli, install GCP skills,
+  set up the ADK development environment, or get started with Google Antigravity on their
+  machine — even if they don't say "install" explicitly (e.g. "how do I get Antigravity
+  running?", "set me up with the ADK stuff", "I want to use agents-cli locally").
 ---
 
 # Antigravity 2.0 — Local Installation Guide
 
-Help the user install the full Antigravity developer stack on their laptop:
+Help the user install the full Antigravity 2.0 developer stack on their laptop:
 
-1. **Antigravity CLI (`agy`)** — the core CLI
-2. **Google Agents CLI (`agents-cli`)** — ADK lifecycle toolchain
-3. **GCP ADK Skills** — coding-agent skills for building, deploying, and evaluating agents
-4. **Google Cloud Skills** — coding-agent skills for GCP services (BigQuery, Cloud Run, GKE, etc.)
+1. **Antigravity 2.0 SDK (`google-antigravity`)** — the core Python SDK
+2. **Antigravity CLI (`agy`)** — the command-line interface
+3. **Google Agents CLI (`agents-cli`)** — ADK lifecycle toolchain
+4. **GCP ADK Skills** — coding-agent skills for building, deploying, and evaluating agents
+5. **Google Cloud Skills** — coding-agent skills for GCP services (BigQuery, Cloud Run, GKE, etc.)
 
 Work through these in order. Verify each step succeeded before moving on, and adapt commands
 to the user's OS/shell when needed.
@@ -51,7 +52,33 @@ brew install node python@3.12
 
 ---
 
-## Step 2 — Install the Antigravity CLI (`agy`)
+## Step 2 — Install Antigravity 2.0 SDK (`google-antigravity`)
+
+The `google-antigravity` Python package is the core Antigravity 2.0 SDK. Install it with pip
+(or uv):
+
+```bash
+pip install google-antigravity
+```
+
+With uv (recommended if you're already using it for agents-cli):
+```bash
+uv pip install google-antigravity
+```
+
+Verify:
+```bash
+python3 -c "import google.antigravity; print('Antigravity 2.0 SDK installed')"
+```
+
+**Already installed but outdated?** Upgrade with:
+```bash
+pip install --upgrade google-antigravity
+```
+
+---
+
+## Step 3 — Install the Antigravity CLI (`agy`)
 
 Install the `agy` binary from the official install script:
 
@@ -84,7 +111,7 @@ export PATH="$HOME/.local/bin:$PATH"
 
 ---
 
-## Step 3 — Install the Google Agents CLI (`agents-cli`)
+## Step 4 — Install the Google Agents CLI (`agents-cli`)
 
 `agents-cli` is the ADK lifecycle toolchain. Install it as a uv tool (recommended):
 
@@ -115,7 +142,7 @@ uv tool upgrade google-agents-cli
 
 ---
 
-## Step 4 — Install GCP ADK Skills
+## Step 5 — Install GCP ADK Skills
 
 `agents-cli setup` installs the ADK development skills into all detected coding agents
 (Claude Code, Gemini CLI, Cursor, Windsurf, etc.) and optionally handles authentication:
@@ -150,7 +177,7 @@ agents-cli setup --interactive
 
 ---
 
-## Step 5 — Install Google Cloud Skills
+## Step 6 — Install Google Cloud Skills
 
 Install the broader set of GCP service skills (BigQuery, Cloud Run, GKE, Firebase, AlloyDB,
 Cloud SQL, Gemini API, and more) from the `google/skills` GitHub repository:
@@ -177,6 +204,7 @@ npx skills add google/skills --list
 After all steps, confirm everything is in place:
 
 ```bash
+python3 -c "import google.antigravity; print('SDK ok')"  # Antigravity 2.0 SDK
 agy --version              # Antigravity CLI
 agents-cli --version       # Google Agents CLI
 npx skills list            # Should show google-agents-cli-* and google-cloud-* skills
@@ -202,6 +230,7 @@ agents-cli playground      # Run locally and test
 
 | Symptom | Fix |
 |---|---|
+| `ModuleNotFoundError: google.antigravity` | Run `pip install google-antigravity` |
 | `agy: command not found` | Run `agy install`, then restart your shell or add `~/.local/bin` to PATH |
 | `agents-cli: command not found` | Run `uv tool install google-agents-cli`; check uv's bin dir is on PATH |
 | `npx skills` not found | Install Node.js ≥ 18: `brew install node` or `nvm install 18` |
