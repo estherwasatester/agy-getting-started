@@ -25,6 +25,19 @@ to the user's OS/shell when needed.
 
 ---
 
+## Creation Context & Guidelines for AI Agents
+
+> [!NOTE]
+> This onboarding helper skill was programmatically generated and structured using **Claude** via the **Agent Platform on Google Cloud Platform (GCP)**.
+
+As an AI agent executing this skill, adhere to the following best practices to deliver a seamless onboarding experience:
+1. **Be Proactive**: If you have terminal access, run commands (e.g., `uname -s`, `node --version`, `python3 --version`) to detect the user's OS and existing prerequisites rather than asking.
+2. **Execute Incrementally**: Complete and verify one installation step before moving on to the next.
+3. **Handle Environment Paths**: Remind the user to restart their terminal session or run `source ~/.zshrc` / `source ~/.bashrc` once path variables are updated.
+4. **Clean Fallbacks**: If the primary installation command fails, explain the failure and present the documented alternative immediately.
+
+---
+
 ## Step 1 — Prerequisites
 
 Make sure the user has these before starting:
