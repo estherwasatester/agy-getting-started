@@ -1,6 +1,12 @@
 {
   "version": 1,
   "skills": {
+    "antigravity-install": {
+      "source": "local",
+      "sourceType": "local",
+      "skillPath": ".agents/skills/antigravity-install/SKILL.md",
+      "computedHash": "d30b3bdc554d799094d7830b051d958ba77bbfee9f71cb2d045a0b64efd4a739"
+    },
     "skill-creator": {
       "source": "anthropics/skills",
       "sourceType": "github",
